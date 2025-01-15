@@ -1171,7 +1171,7 @@ defmodule Timex do
         def day_to_num(unquote(atom)), do: unquote(day_num)
       end
 
-    Module.eval_quoted(__MODULE__, day_quoted, [], __ENV__)
+    Code.eval_quoted(day_quoted, [], __ENV__)
   end)
 
   # Make an attempt at cleaning up the provided string
@@ -1269,7 +1269,7 @@ defmodule Timex do
         end
       end
 
-    Module.eval_quoted(__MODULE__, month_quoted, [], __ENV__)
+    Code.eval_quoted(month_quoted, [], __ENV__)
   end)
 
   # Make an attempt at cleaning up the provided string

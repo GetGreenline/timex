@@ -681,10 +681,10 @@ defmodule Timex.Parse.ZoneInfo.Parser do
   defp parse_int(1, bin), do: parse_i32(bin)
   defp parse_int(_, bin), do: parse_i64(bin)
 
-  defp parse_i32(<<val::integer_32bit_be, rest::binary>>), do: {val, rest}
-  defp parse_i64(<<val::integer_64bit_be, rest::binary>>), do: {val, rest}
-  defp parse_char(<<val::signed_char_be, rest::binary>>), do: {val, rest}
-  defp parse_uchar(<<val::unsigned_char_be, rest::binary>>), do: {val, rest}
+  defp parse_i32(<<val::integer_32bit_be(), rest::binary>>), do: {val, rest}
+  defp parse_i64(<<val::integer_64bit_be(), rest::binary>>), do: {val, rest}
+  defp parse_char(<<val::signed_char_be(), rest::binary>>), do: {val, rest}
+  defp parse_uchar(<<val::unsigned_char_be(), rest::binary>>), do: {val, rest}
 
   defp parse_null_terminated_str(bin), do: parse_null_terminated_str(bin, <<>>)
 

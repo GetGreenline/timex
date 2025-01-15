@@ -4,7 +4,7 @@ defmodule Timex.Parse.Duration.Parsers.ISO8601Parser do
   """
   use Timex.Parse.Duration.Parser
 
-  @numeric '.0123456789'
+  @numeric ~c".0123456789"
 
   @doc """
   Parses an ISO-8601 formatted duration string into a Duration struct.
@@ -126,7 +126,7 @@ defmodule Timex.Parse.Duration.Parsers.ISO8601Parser do
   defp parse_component(<<c::utf8>>, _acc) when c in @numeric,
     do: {:error, "unexpected end of input at #{<<c::utf8>>}"}
 
-  defp parse_component(<<c::utf8>>, acc) when c in 'WYMDHS' do
+  defp parse_component(<<c::utf8>>, acc) when c in ~c"WYMDHS" do
     cond do
       String.contains?(acc, ".") ->
         case Float.parse(acc) do
@@ -146,7 +146,7 @@ defmodule Timex.Parse.Duration.Parsers.ISO8601Parser do
     parse_component(rest, <<acc::binary, c::utf8>>)
   end
 
-  defp parse_component(<<c::utf8, rest::binary>>, acc) when c in 'WYMDHS' do
+  defp parse_component(<<c::utf8, rest::binary>>, acc) when c in ~c"WYMDHS" do
     cond do
       String.contains?(acc, ".") ->
         case Float.parse(acc) do
