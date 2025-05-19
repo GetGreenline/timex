@@ -57,7 +57,10 @@ defmodule Timex.Mixfile do
     [
       {:tzdata, "~> 1.1"},
       {:combine, "~> 0.10"},
-      {:gettext, "~> 0.20"},
+      {:gettext,
+       git: "https://github.com/GetGreenline/gettext.git",
+       ref: "0f86cade1757e4c02457c0349fc90789d63cb540",
+       override: true},
       {:ex_doc, "~> 0.13", only: [:docs]},
       {:benchfella, "~> 0.3", only: [:bench]},
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
